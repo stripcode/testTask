@@ -59,3 +59,36 @@ class Shop(db.Model):
     currentTime = time()
     self.createTime = currentTime
     self.updateTime = currentTime
+
+
+
+
+class Product(db.Model):
+  # Тип документа
+  __tablename__ = "product"
+  id = db.Column(db.Integer, primary_key = True)
+  name = db.Column(db.String(255), nullable = False)
+  createTime = db.Column(db.Integer, nullable = False)
+  updateTime = db.Column(db.Integer, nullable = False)
+
+  def __init__(self, name):
+    self.name = name
+    currentTime = time()
+    self.createTime = currentTime
+    self.updateTime = currentTime
+
+
+
+class DocType(db.Model):
+  # Тип документа
+  __tablename__ = "docType"
+  id = db.Column(db.Integer, primary_key = True)
+  name = db.Column(db.String(255), nullable = False)
+  createTime = db.Column(db.Integer, nullable = False)
+  updateTime = db.Column(db.Integer, nullable = False)
+
+  def __init__(self, name):
+    self.name = name
+    currentTime = time()
+    self.createTime = currentTime
+    self.updateTime = currentTime
