@@ -10,7 +10,7 @@ class User(db.Model):
   __tablename__ = "user"
   id = db.Column(db.Integer, primary_key = True)
   fio = db.Column(db.String(255), nullable = False)
-  login = db.Column(db.String(255), nullable = False)
+  login = db.Column(db.String(255), nullable = False, unique = True)
   passwordHash = db.Column(db.String(255), nullable = False)
   createTime = db.Column(db.Integer, nullable = False)
   updateTime = db.Column(db.Integer, nullable = False)
@@ -50,7 +50,7 @@ class Shop(db.Model):
   # Магазин
   __tablename__ = "shop"
   id = db.Column(db.Integer, primary_key = True)
-  name = db.Column(db.String(255), nullable = False)
+  name = db.Column(db.String(255), nullable = False, unique = True)
   createTime = db.Column(db.Integer, nullable = False)
   updateTime = db.Column(db.Integer, nullable = False)
 
@@ -67,7 +67,7 @@ class Product(db.Model):
   # Товар
   __tablename__ = "product"
   id = db.Column(db.Integer, primary_key = True)
-  name = db.Column(db.String(255), nullable = False)
+  name = db.Column(db.String(255), nullable = False, unique = True)
   createTime = db.Column(db.Integer, nullable = False)
   updateTime = db.Column(db.Integer, nullable = False)
 
@@ -83,7 +83,7 @@ class DocType(db.Model):
   # Тип документа
   __tablename__ = "docType"
   id = db.Column(db.Integer, primary_key = True)
-  name = db.Column(db.String(255), nullable = False)
+  name = db.Column(db.String(255), nullable = False, unique = True)
   createTime = db.Column(db.Integer, nullable = False)
   updateTime = db.Column(db.Integer, nullable = False)
 
@@ -103,15 +103,15 @@ class Document(db.Model):
   updateTime = db.Column(db.Integer, nullable = False)
 
   # привязка магазина
-  shopId = db.Column(db.Integer, db.ForeignKey('shop.id'))
+  shopId = db.Column(db.Integer, db.ForeignKey('shop.id'), index = True)
   shop = db.relationship("Shop")
 
   # привязка типа документа
-  docTypeId = db.Column(db.Integer, db.ForeignKey('docType.id'))
+  docTypeId = db.Column(db.Integer, db.ForeignKey('docType.id'), index = True)
   docType = db.relationship("DocType")
 
   # привязка типа документа
-  userId = db.Column(db.Integer, db.ForeignKey('user.id'))
+  userId = db.Column(db.Integer, db.ForeignKey('user.id'), index = True)
   user = db.relationship("User")
 
   def __init__(self, shop, docType, user):
