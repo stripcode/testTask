@@ -29,11 +29,13 @@ def createApp():
   from .blueprints.DataAuthRequest import app as DataAuthRequest
   from .blueprints.DataUser import app as DataUser
   from .blueprints.DataShop import app as DataShop
+  from .blueprints.DataDoc import app as DataDoc
 
   app.register_blueprint(Pages)
   app.register_blueprint(DataAuthRequest, url_prefix = "/data/authRequest")
   app.register_blueprint(DataUser, url_prefix = "/data/user")
   app.register_blueprint(DataShop, url_prefix = "/data/shop")
+  app.register_blueprint(DataDoc, url_prefix = "/data/doc")
 
 
   return app

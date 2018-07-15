@@ -1,4 +1,5 @@
 from marshmallow_sqlalchemy import ModelSchema
+from marshmallow import fields
 import app.domain as domain
 
 
@@ -13,3 +14,16 @@ class UserSchema(ModelSchema):
 class ShopSchema(ModelSchema):
   class Meta:
     model = domain.Shop
+
+
+class DocTypeSchema(ModelSchema):
+  class Meta:
+    model = domain.DocType
+
+
+
+class DocumentSchema(ModelSchema):
+  shop = fields.Nested("ShopSchema", only = ("id", "name"))
+  docType = fields.Nested("DocTypeSchema", only = ("id", "name"))
+  class Meta:
+    model = domain.Document

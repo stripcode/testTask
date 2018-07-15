@@ -13,7 +13,7 @@ shopsSchema = ShopSchema(many = True)
 @app.route("/")
 @login_required
 def getShops():
-  shops = Shop.query.all()
+  shops = Shop.query.order_by(Shop.name.asc()).all()
   return jsonify(shopsSchema.dump(shops).data)
 
 

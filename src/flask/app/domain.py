@@ -64,7 +64,7 @@ class Shop(db.Model):
 
 
 class Product(db.Model):
-  # Тип документа
+  # Товар
   __tablename__ = "product"
   id = db.Column(db.Integer, primary_key = True)
   name = db.Column(db.String(255), nullable = False)
@@ -89,6 +89,35 @@ class DocType(db.Model):
 
   def __init__(self, name):
     self.name = name
+    currentTime = time()
+    self.createTime = currentTime
+    self.updateTime = currentTime
+
+
+
+class Document(db.Model):
+  # Документ
+  __tablename__ = "document"
+  id = db.Column(db.Integer, primary_key = True)
+  createTime = db.Column(db.Integer, nullable = False)
+  updateTime = db.Column(db.Integer, nullable = False)
+
+  # привязка магазина
+  shopId = db.Column(db.Integer, db.ForeignKey('shop.id'))
+  shop = db.relationship("Shop")
+
+  # привязка типа документа
+  docTypeId = db.Column(db.Integer, db.ForeignKey('docType.id'))
+  docType = db.relationship("DocType")
+
+  # привязка типа документа
+  userId = db.Column(db.Integer, db.ForeignKey('user.id'))
+  user = db.relationship("User")
+
+  def __init__(self, shop, docType, user):
+    self.shop = shop
+    self.docType = docType
+    self.user = user
     currentTime = time()
     self.createTime = currentTime
     self.updateTime = currentTime
