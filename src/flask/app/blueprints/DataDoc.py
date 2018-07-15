@@ -8,7 +8,7 @@ from app.ext import db
 
 bigQuery = "SELECT document.id, docType.name as docTypeName, shop.name as shopName, user.fio as userFio FROM document, docType, shop, user \
   WHERE document.docTypeId = docType.id and document.shopId = shop.id and document.userId = user.id \
-  and (docType.name LIKE '%{phrase}%' or shop.name LIKE '%{phrase}%' or user.fio LIKE '%{phrase}%' or document.id = {phrase} )"
+  and (docType.name LIKE '%{phrase}%' or shop.name LIKE '%{phrase}%' or user.fio LIKE '%{phrase}%' or document.id LIKE '%{phrase}%' )"
 
 
 
