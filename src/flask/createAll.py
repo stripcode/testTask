@@ -10,13 +10,21 @@ for i in range(1, 100):
   user = User("Админ" + str(i), "admin" + str(i), "admin" + str(i))
   db.session.add(user)
 
-for i in range(1, 100):
-  shop = Shop("Магазин №" + str(i))
-  db.session.add(shop)
+shopPattern = ["Монетка", "Пятерочка", "Связной"]
 
 for i in range(1, 100):
-  shop = Product("Продукт" + str(i))
+  name = shopPattern.pop(0)
+  shop = Shop("{shop} №{}".format(i, shop = name))
   db.session.add(shop)
+  shopPattern.append(name)
+
+productPattern = ["Колбаса", "Сыр", "Хлеб"]
+
+for i in range(1, 100):
+  name = productPattern.pop(0)
+  shop = Product("{product} №{}".format(i, product = name))
+  db.session.add(shop)
+  productPattern.append(name)
 
 db.session.add(DocType("Чек"))
 db.session.add(DocType("Расписка"))

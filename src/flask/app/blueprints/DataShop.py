@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from app.domain import Shop
 from flask_login import login_required
 from app.marsh import ShopSchema
@@ -14,4 +14,13 @@ shopsSchema = ShopSchema(many = True)
 @login_required
 def getShops():
   shops = Shop.query.all()
+  return jsonify(shopsSchema.dump(shops).data)
+
+
+
+@app.route("/search/")
+@login_required
+def search():
+  phrase = request.args.get("phrase", "")
+  shops = Shop.query.filter(Shop.name.like("%{}%".format(phrase))).order_by(Shop.name.asc()).all()
   return jsonify(shopsSchema.dump(shops).data)
