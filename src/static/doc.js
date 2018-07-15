@@ -19,6 +19,7 @@ export var docRouter = {
 
   routes: {
     "doc/": "showAllDocsPage",
+    "doc/search/": "showSearchDocsPage",
     "doc/:id": "showDocPage"
   },
 
@@ -26,6 +27,11 @@ export var docRouter = {
     showAllDocsPage: function(){
       appRootView.showPrivateView(new AllDocsPage());
     },
+
+    showSearchDocsPage: function(){
+      appRootView.showPrivateView(new SearchDocsPage());
+    },
+
     showDocPage: function(id){
       var doc = new Doc();
       doc.fetch({
@@ -75,6 +81,42 @@ var DocPage = Marionette.View.extend({
   }
 });
 
+
+
+var SearchDocsPage = Marionette.View.extend({
+
+  template: require("templates/doc/SearchDocsPage.tpl"),
+
+  regions: {
+    workspace: ".workspaceSearchDocsPage"
+  },
+
+  events: {
+    "click .submitSearchDocsPage": "submit"
+  },
+
+  submit: function(){
+    var docCollection = new DocCollection();
+    docCollection.fetch({
+      url: "/data/doc/search/",
+      data: {
+        phrase: this.$el.find("input[name=search]").val()
+      },
+      success: _.bind(function(collection){
+        this.showChildView("workspace", new SearchCollectionView({collection: collection}));
+      }, this),
+      error: XHRError
+    })
+  }
+});
+
+
+
+
+var SearchCollectionView = Marionette.View.extend({
+
+  template: require("templates/doc/searchCollectionView.tpl")
+});
 
 
 var DocCollectionView = Marionette.View.extend({
