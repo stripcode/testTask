@@ -1,3 +1,4 @@
+pymysql
 flask
 flask_login
 flask_sqlalchemy
