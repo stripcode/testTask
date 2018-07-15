@@ -1,2 +1,4 @@
 __pycache__
 .DS_Store
+src/static/node_modules/
+src/flask/app/static

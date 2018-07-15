@@ -16,7 +16,7 @@ class User(db.Model):
   def __init__(self, fio, login, rawPassword):
     self.setFio(fio)
     self.setLogin(login)
-    self.setHashFromPassword(rawPassword, current_app.config["SALT"])
+    self.setPasswordHash(rawPassword, current_app.config["SALT"])
 
   def setFio(self, fio):
     self.fio = fio

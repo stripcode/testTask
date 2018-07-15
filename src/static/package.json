@@ -1,0 +1,27 @@
+{
+  "name": "testTask",
+  "dependencies": {
+    "babel-loader": "*",
+    "babel-core": "*",
+    "webpack": "*",
+    "backbone": "*",
+    "backbone.marionette": "3.3.1",
+    "jquery": "*",
+    "moment": "*",
+    "twig": "*",
+    "eonasdan-bootstrap-datetimepicker": "~4.17.37",
+    "twig-loader": "*",
+    "css-loader": "*",
+    "style-loader": "*",
+    "file-loader": "*",
+    "font-awesome": "*",
+    "bootstrap": "*",
+    "tinycon": "*",
+    "inputmask": "*",
+    "bootstrap-notify": "*",
+    "select2": "~4.0"
+  },
+  "devDependencies": {
+    "extract-text-webpack-plugin": "^4.0.0-beta.0"
+  }
+}
