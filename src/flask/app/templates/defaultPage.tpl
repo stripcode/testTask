@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/static/app.css">
   </head>
   <body>
-    <div class="workspaceAppRootView"></div>
+    <div class="workspaceAppRootView container"></div>
     <script type="text/javascript" src="/static/app.js"></script>
   </body>
 </html>

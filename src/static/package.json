@@ -4,6 +4,7 @@
     "babel-loader": "*",
     "babel-core": "*",
     "webpack": "*",
+    "webpack-cli": "*",
     "backbone": "*",
     "backbone.marionette": "3.3.1",
     "jquery": "*",
@@ -15,10 +16,9 @@
     "style-loader": "*",
     "file-loader": "*",
     "font-awesome": "*",
-    "bootstrap": "*",
     "tinycon": "*",
     "inputmask": "*",
-    "bootstrap-notify": "*",
+    "bootstrap": "3.3",
     "select2": "~4.0"
   },
   "devDependencies": {

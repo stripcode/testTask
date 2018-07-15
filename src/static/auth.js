@@ -38,7 +38,7 @@ var AuthPage = Marionette.View.extend({
       password: this.$el.find("input[name=password]").val()
     },{
       success: function(model){
-        console.log(model)
+        location.hash = "";
       },
       error: XHRError
     })
