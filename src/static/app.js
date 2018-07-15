@@ -7,9 +7,33 @@ import "select2/dist/js/select2.js"
 
 
 
-export var app = new Marionette.Application({
+import {authRouter} from "./auth"
+import {XHRError} from "./other"
+import {User} from "./user"
+
+
+
+var router = Marionette.AppRouter.extend({
+});
+
+
+
+var app = new Marionette.Application({
 
   onStart: function(){
+
+    var r = new router();
+    r.processAppRoutes(authRouter.controller, authRouter.routes);
+
+    var currentUser = new User();
+    currentUser.fetch({
+      url: "/data/user/session/",
+      success: function(){
+      },
+      error: function(){
+        location.hash = "enter/"
+      }
+    })
   }
 });
 

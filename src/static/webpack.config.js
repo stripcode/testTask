@@ -22,7 +22,7 @@ module.exports = {
 
   resolve: {
     alias: {
-      templates: path.resolve(__dirname, "src/static/templates/")
+      templates: path.resolve(__dirname, "templates/")
     },
   },
 
@@ -61,7 +61,7 @@ module.exports = {
   },
 
   plugins: [
-    new ExtractTextPlugin("vendor.css"),
+    new ExtractTextPlugin("app.css"),
     new webpack.ProvidePlugin({
           $: "jquery",
           jQuery: "jquery",
