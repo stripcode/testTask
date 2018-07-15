@@ -11,6 +11,8 @@
 <h4>Продукты</h4>
 <ul>
 {% for product in products %}
-  <li>{{ product.name }}</li>
+  <li>{{ product.name }}
+    <br><img src="/data/product/{{ product.id }}/barcode/"
+  </li>
 {% endfor %}
 </ul>
