@@ -25,5 +25,6 @@ class DocTypeSchema(ModelSchema):
 class DocumentSchema(ModelSchema):
   shop = fields.Nested("ShopSchema", only = ("id", "name"))
   docType = fields.Nested("DocTypeSchema", only = ("id", "name"))
+  user = fields.Nested("UserSchema", only = ("id", "fio"))
   class Meta:
     model = domain.Document

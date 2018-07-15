@@ -19,11 +19,22 @@ export var docRouter = {
 
   routes: {
     "doc/": "showAllDocsPage",
+    "doc/:id": "showDocPage"
   },
 
   controller: {
     showAllDocsPage: function(){
       appRootView.showPrivateView(new AllDocsPage());
+    },
+    showDocPage: function(id){
+      var doc = new Doc();
+      doc.fetch({
+        url: "/data/doc/" + id,
+        success: function(model){
+          appRootView.showPrivateView(new DocPage({model: model}));
+        },
+        error: XHRError
+      })
     }
   }
 }
@@ -46,6 +57,21 @@ var AllDocsPage = Marionette.View.extend({
       }, this),
       error: XHRError
     })
+  }
+});
+
+
+
+var DocPage = Marionette.View.extend({
+
+  template: require("templates/doc/docPage.tpl"),
+
+  events: {
+    "click .cancelDocPage": "cancel"
+  },
+
+  cancel: function(){
+    history.back();
   }
 });
 

@@ -6,6 +6,7 @@ from app.marsh import DocumentSchema
 
 
 app = Blueprint("DataDoc", __name__)
+docSchema = DocumentSchema()
 docsSchema = DocumentSchema(many = True)
 
 
@@ -15,3 +16,11 @@ docsSchema = DocumentSchema(many = True)
 def getDocs():
   docs = Document.query.order_by(Document.updateTime.asc()).all()
   return jsonify(docsSchema.dump(docs).data)
+
+
+
+@app.route("/<int:docId>")
+@login_required
+def getDoc(docId):
+  doc = Document.query.get_or_404(docId)
+  return jsonify(docSchema.dump(doc).data)
