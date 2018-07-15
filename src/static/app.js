@@ -10,6 +10,7 @@ import "select2/dist/js/select2.js"
 
 import {authRouter} from "./auth"
 import {pageRouter} from "./page"
+import {shopRouter} from "./shop"
 import {XHRError, appRootView} from "./other"
 
 
@@ -25,6 +26,7 @@ var app = new Marionette.Application({
     var r = new router();
     r.processAppRoutes(authRouter.controller, authRouter.routes);
     r.processAppRoutes(pageRouter.controller, pageRouter.routes);
+    r.processAppRoutes(shopRouter.controller, shopRouter.routes);
   }
 });
 

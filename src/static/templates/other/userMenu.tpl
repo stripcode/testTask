@@ -5,7 +5,7 @@
     <a role="presentation" href="#">Главная</a>
   </li>
   <li>
-    <a role="presentation" href="#shops/">Магазины</a>
+    <a role="presentation" href="#shop/">Магазины</a>
   </li>
   <li>
     <a role="presentation" href="#logout/">Выход</a>

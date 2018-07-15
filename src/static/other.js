@@ -57,6 +57,7 @@ export var appRootView = new AppRootView();
 
 
 export function XHRError(mode, xhr){
+  // if(xhr.responseText)
   alert(xhr.responseText);
 }
 

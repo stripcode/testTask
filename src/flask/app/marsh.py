@@ -7,3 +7,9 @@ class UserSchema(ModelSchema):
   class Meta:
     model = domain.User
     exclude = ("passwordHash",)
+
+
+
+class ShopSchema(ModelSchema):
+  class Meta:
+    model = domain.Shop
