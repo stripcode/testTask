@@ -7,3 +7,10 @@
   <li>Магазин: {{ shop.name }}</li>
   <li>Пользователь: {{ user.fio }}</li>
 </ul>
+
+<h4>Продукты</h4>
+<ul>
+{% for product in products %}
+  <li>{{ product.name }}</li>
+{% endfor %}
+</ul>

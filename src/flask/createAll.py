@@ -32,6 +32,7 @@ for i in range(1, 100):
 for i in range(1, 100):
   product = Product("{product} №{}".format(i, product = productPattern[randint(0, len(productPattern) - 1)]))
   db.session.add(product)
+  products.append(product)
 
 # создаем типы документов
 docTypes = [DocType("Чек"), DocType("Расписка"), DocType("Чесное слово")]
@@ -41,6 +42,9 @@ for docType in docTypes:
 # создаем документы
 for i in range(1, 100):
   doc = Document(shops[randint(0, len(shops) - 1)], docTypes[randint(0, len(docTypes) - 1)], users[randint(0, len(users) -1 )])
+  for i in range(0, randint(3, 10)):
+    doc.addProduct(products[randint(0, len(products) -1)])
+
   db.session.add(doc)
 
 db.session.commit()

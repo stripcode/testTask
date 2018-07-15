@@ -4,6 +4,11 @@ from hashlib import sha1
 from time import time
 
 
+document2productRelationship = db.Table('document2product',
+    db.Column('documentId', db.Integer, db.ForeignKey('document.id')),
+    db.Column('productId', db.Integer, db.ForeignKey('product.id'))
+)
+
 
 class User(db.Model):
   # Пользователь системы
@@ -114,6 +119,8 @@ class Document(db.Model):
   userId = db.Column(db.Integer, db.ForeignKey('user.id'), index = True)
   user = db.relationship("User")
 
+  products = db.relationship("Product", secondary = document2productRelationship, lazy = "dynamic")
+
   def __init__(self, shop, docType, user):
     self.shop = shop
     self.docType = docType
@@ -121,3 +128,6 @@ class Document(db.Model):
     currentTime = time()
     self.createTime = currentTime
     self.updateTime = currentTime
+
+  def addProduct(self, product):
+    self.products.append(product)

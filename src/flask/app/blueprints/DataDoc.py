@@ -7,7 +7,7 @@ from app.marsh import DocumentSchema
 
 app = Blueprint("DataDoc", __name__)
 docSchema = DocumentSchema()
-docsSchema = DocumentSchema(many = True)
+docsSchema = DocumentSchema(many = True, exclude = ("products",))
 
 
 
